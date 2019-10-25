@@ -71,4 +71,5 @@ def process_fov(field_num: int, experiment_str: str):
 
 
 if __name__ == "__main__":
-    process_fov(sys.argv[1], sys.argv[2])
+    decoded_spots = process_fov(sys.argv[1], sys.argv[2])
+    decoded_spots.save_csv("decoded.csv")
