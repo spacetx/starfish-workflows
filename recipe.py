@@ -1,5 +1,3 @@
-import sys
-
 import starfish
 from starfish import FieldOfView
 from starfish.image import Filter
@@ -69,7 +67,3 @@ def process_fov(field_num: int, experiment_str: str):
     df = decoded.to_decoded_dataframe()
     return df
 
-
-if __name__ == "__main__":
-    decoded_spots = process_fov(sys.argv[1], sys.argv[2])
-    decoded_spots.save_csv("decoded.csv")

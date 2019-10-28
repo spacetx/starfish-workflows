@@ -1,0 +1,9 @@
+#!/bin/bash
+
+AWS_BATCH_JOB_ARRAY_INDEX=0
+while [ $AWS_BATCH_JOB_ARRAY_INDEX -le 2 ]
+do
+    echo $AWS_BATCH_JOB_ARRAY_INDEX
+    docker run -e AWS_BATCH_JOB_ARRAY_INDEX=$AWS_BATCH_JOB_ARRAY_INDEX spacetx/batch-iss-job
+    AWS_BATCH_JOB_ARRAY_INDEX=$((AWS_BATCH_JOB_ARRAY_INDEX + 1))
+done
