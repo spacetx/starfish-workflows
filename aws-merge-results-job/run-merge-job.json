@@ -1,0 +1,5 @@
+{
+  "jobName": "iss-merge-job",
+  "jobQueue": "first-run-job-queue",
+  "jobDefinition": "iss-merge-job"
+}

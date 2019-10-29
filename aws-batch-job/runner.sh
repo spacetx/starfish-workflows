@@ -8,9 +8,9 @@ import starfish
 recipe = __import__('recipe')
 
 decoded_spots = recipe.process_fov(${field_of_view}, "${experiment}")
-filename = f"fov_{int(${field_of_view}):03d}"+"_decoded.csv"
+filename = f"fov_{int(${field_of_view}):03d}"+"_decoded.nc"
 print(filename)
-decoded_spots.save_csv(filename)
+decoded_spots.to_netcdf(filename)
 EOF
 
-aws s3 cp .  s3://starfish.data.output-warehouse/batch-job-outputs/iss-published/ --recursive  --exclude "*" --include "*decoded.csv"
+aws s3 cp .  s3://starfish.data.output-warehouse/batch-job-outputs/iss-published/ --recursive  --exclude "*" --include "*decoded.nc"

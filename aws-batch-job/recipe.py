@@ -63,7 +63,4 @@ def process_fov(field_num: int, experiment_str: str):
     print("Decoding")
     decoder = DecodeSpots.PerRoundMaxChannel(codebook=experiment.codebook)
     decoded = decoder.run(spots=spots)
-
-    df = decoded.to_decoded_dataframe()
-    return df
-
+    return decoded
