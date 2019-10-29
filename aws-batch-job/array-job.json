@@ -1,0 +1,8 @@
+{
+  "jobName": "REPLACE_WITH_JOB_NAME",
+  "jobQueue": "first-run-job-queue",
+  "arrayProperties": {
+    "size": "REPLACE_WITH_NUM_FOVS"
+  },
+  "jobDefinition": "REPLACE_WITH_JOB_NAME"
+}
