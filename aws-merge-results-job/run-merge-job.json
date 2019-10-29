@@ -1,5 +1,6 @@
 {
   "jobName": "iss-merge-job",
   "jobQueue": "first-run-job-queue",
-  "jobDefinition": "iss-merge-job"
+  "jobDefinition": "iss-merge-job",
+  "depends-on": "ADD_RUNNING_JOB_ID_HERE"
 }
