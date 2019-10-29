@@ -2,6 +2,7 @@
   "jobDefinitionName": "iss-fov",
   "type": "container",
   "containerProperties": {
+    "jobRoleArn": "ARN",
     "image": "spacetx/batch-iss-job",
     "vcpus": 1,
     "memory": 2500
