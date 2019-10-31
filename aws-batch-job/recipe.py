@@ -1,5 +1,3 @@
-import os
-
 import starfish
 from starfish import FieldOfView
 from starfish.image import Filter
@@ -67,13 +65,3 @@ def process_fov(field_num: int, experiment_str: str):
     decoder = DecodeSpots.PerRoundMaxChannel(codebook=experiment.codebook)
     decoded = decoder.run(spots=spots)
     return decoded
-
-
-# Get FOV num
-FOV_NUM = os.getenv('AWS_BATCH_JOB_ARRAY_INDEX')
-EXPERIMENT_URL = os.getenv('EXPERIMENT_URL')
-
-# Process FOV
-decoded_spots = process_fov(FOV_NUM, EXPERIMENT_URL)
-filename = f"fov_{int(FOV_NUM):03d}"+"_decoded.nc"
-decoded_spots.to_netcdf(filename)
