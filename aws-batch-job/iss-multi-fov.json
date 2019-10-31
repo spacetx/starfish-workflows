@@ -1,8 +1,0 @@
-{
-  "jobName": "iss-fov",
-  "jobQueue": "first-run-job-queue",
-  "arrayProperties": {
-    "size": 2
-  },
-  "jobDefinition": "iss-fov"
-}

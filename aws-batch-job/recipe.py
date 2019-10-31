@@ -1,5 +1,4 @@
 import os
-import boto3
 
 import starfish
 from starfish import FieldOfView
@@ -27,7 +26,8 @@ def process_fov(field_num: int, experiment_str: str):
     fov_str: str = f"fov_{int(field_num):03d}"
 
     # load experiment
-    experiment = starfish.Experiment.from_json(experiment_str)
+    print(str(experiment_str))
+    experiment = starfish.Experiment.from_json(str(experiment_str))
 
     print(f"loading fov: {fov_str}")
     fov = experiment[fov_str]
@@ -71,13 +71,9 @@ def process_fov(field_num: int, experiment_str: str):
 
 # Get FOV num
 FOV_NUM = os.getenv('AWS_BATCH_JOB_ARRAY_INDEX')
-EXPERIMENT_URL = "https://s3.amazonaws.com/spacetx.starfish.data.public/browse/formatted/iss/20190506/experiment.json"
+EXPERIMENT_URL = os.getenv('EXPERIMENT_URL')
 
 # Process FOV
 decoded_spots = process_fov(FOV_NUM, EXPERIMENT_URL)
 filename = f"fov_{int(FOV_NUM):03d}"+"_decoded.nc"
 decoded_spots.to_netcdf(filename)
-
-# copy results to s3
-s3 = boto3.client('s3')
-s3.upload_file(filename, "starfish.data.output-warehouse", "batch-job-outputs/iss-published/"+filename)

@@ -1,6 +1,8 @@
 FROM spacetx/starfish:latest
 
+ADD runner.sh /usr/local/bin/runner.sh
 ADD recipe.py /tmp/recipe.py
+RUN pip install awscli
 WORKDIR /tmp
-ENTRYPOINT ["/usr/bin/env"]
-CMD [ "python", "./recipe.py" ]
+USER starfish
+ENTRYPOINT ["/usr/local/bin/runner.sh"]
