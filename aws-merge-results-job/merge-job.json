@@ -1,8 +1,8 @@
 {
-  "jobDefinitionName": "iss-merge-job",
+  "jobDefinitionName": "merge-job",
   "type": "container",
   "containerProperties": {
-    "jobRoleArn": "ARN",
+    "jobRoleArn": "arn:aws:iam::422553907334:role/spacetx-batch",
     "image": "spacetx/merge-batch-job",
     "vcpus": 1,
     "memory": 2500

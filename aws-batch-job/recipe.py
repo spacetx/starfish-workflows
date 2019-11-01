@@ -1,12 +1,10 @@
-import starfish
-from starfish import FieldOfView
-from starfish.image import Filter
-from starfish.image import ApplyTransform, LearnTransform
+from starfish import Codebook, FieldOfView
+from starfish.image import ApplyTransform, Filter, LearnTransform
 from starfish.spots import DecodeSpots, FindSpots
 from starfish.types import Axes, FunctionSource
 
 
-def process_fov(field_num: int, experiment_str: str):
+def process_fov(fov: FieldOfView, codebook: Codebook):
     """Process a single field of view of ISS data
     Parameters
     ----------
@@ -20,15 +18,6 @@ def process_fov(field_num: int, experiment_str: str):
     DecodedSpots :
         tabular object containing the locations of detected spots.
     """
-
-    fov_str: str = f"fov_{int(field_num):03d}"
-
-    # load experiment
-    print(str(experiment_str))
-    experiment = starfish.Experiment.from_json(str(experiment_str))
-
-    print(f"loading fov: {fov_str}")
-    fov = experiment[fov_str]
 
     # note the structure of the 5D tensor containing the raw imaging data
     imgs = fov.get_image(FieldOfView.PRIMARY_IMAGES)
@@ -62,6 +51,6 @@ def process_fov(field_num: int, experiment_str: str):
     spots = detector.run(image_stack=filtered_imgs, reference_image=dots_max)
 
     print("Decoding")
-    decoder = DecodeSpots.PerRoundMaxChannel(codebook=experiment.codebook)
+    decoder = DecodeSpots.PerRoundMaxChannel(codebook=codebook)
     decoded = decoder.run(spots=spots)
     return decoded

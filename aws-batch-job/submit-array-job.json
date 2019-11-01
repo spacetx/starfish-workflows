@@ -1,0 +1,24 @@
+{
+  "jobDefinition": "process-fov",
+  "arrayProperties": {
+    "size": 2
+  },
+  "jobName": "process-fov-batch-job",
+  "jobQueue": "first-run-job-queue",
+  "containerOverrides": {
+    "environment": [
+      {
+        "name": "RECIPE_LOCATION",
+        "value": "s3://starfish.data.output-warehouse/batch-job-outputs/iss-published/recipe.py"
+      },
+      {
+        "name": "EXPERIMENT_URL",
+        "value": "https://s3.amazonaws.com/spacetx.starfish.data.public/browse/formatted/iss/20190506/experiment.json"
+      },
+      {
+        "name": "RESULTS_LOCATION",
+        "value": "s3://starfish.data.output-warehouse/batch-job-outputs/iss-published/"
+      }
+    ]
+  }
+}
