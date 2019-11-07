@@ -9,15 +9,15 @@
     "environment": [
       {
         "name": "RECIPE_LOCATION",
-        "value": "s3://starfish.data.output-warehouse/batch-job-outputs/iss-published/recipe.py"
+        "value": "ADD RECIPE LOCATION HERE"
       },
       {
         "name": "EXPERIMENT_URL",
-        "value": "https://s3.amazonaws.com/spacetx.starfish.data.public/browse/formatted/iss/20190506/experiment.json"
+        "value": "ADD EXPERIMENT URL HERE"
       },
       {
         "name": "RESULTS_LOCATION",
-        "value": "s3://starfish.data.output-warehouse/batch-job-outputs/iss-published/"
+        "value": "ADD RESULTS LOCATION HERE"
       }
     ]
   }
