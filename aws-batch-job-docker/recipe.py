@@ -4,14 +4,14 @@ from starfish.spots import DecodeSpots, FindSpots
 from starfish.types import Axes, FunctionSource
 
 
-def process_fov(fov: FieldOfView, codebook: Codebook):
+def process_fov(fov: FieldOfView, codebook: Codebook) -> DecodedIntensityTable:
     """Process a single field of view of ISS data
     Parameters
     ----------
-    field_num : int
+    fov : FieldOfView
         the field of view to process
-    experiment_str : int
-        path of experiment json file
+    codebook : Codebook
+        the Codebook to use for decoding
 
     Returns
     -------
